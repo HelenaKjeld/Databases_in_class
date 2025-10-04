@@ -1,0 +1,36 @@
+1. Retrieve all countries from Europe ordered by population 
+
+SELECT * FROM country
+where Continent = 'Europe'
+order by Population DESC;
+
+
+2. Retrieve all countries with a population greater than 10 million
+
+SELECT * FROM country
+where Population > 10000000
+order by Population DESC;
+
+
+3. Retrieve all cities in Denmark 
+
+SELECT * FROM city
+where countrycode = 'DNK'
+
+
+4. Retrieve all unique continents from country 
+
+SELECT DISTINCT Continent FROM country; 
+ 
+5. Retrieve a list of the 20 largest countries (population). The list should include 
+the columns: Name, Continent and Population 
+
+SELECT Name, Continent, Population FROM country
+order by Population DESC
+LIMIT 20;
+
+
+6. Revert the list above so it displays the 20 smallest countries 
+SELECT Name, Continent, Population FROM country
+order by Population ASC 
+LIMIT 20;
