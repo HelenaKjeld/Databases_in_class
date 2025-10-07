@@ -5435,3 +5435,31 @@ commit;
 SET autocommit=@old_autocommit;
 
 -- Dump completed on 2020-01-22  9:56:18
+
+
+--  Get a list of the first 10 countries in Europe with a population greater than 
+-- Denmark  
+
+SELECT Name, Population, Continent
+FROM country
+WHERE Continent = 'Europe' 
+AND Population > (SELECT Population FROM country WHERE Name = 'Denmark')
+ORDER BY Population DESC
+LIMIT 10;
+
+SELECT Name, Population, Continent
+FROM country
+WHERE Population > ( SELECT Population FROM country WHERE Name LIKE 'Denmark' )
+AND Continent = 'Europe'
+ORDER BY Population ASC
+LIMIT 10;
+
+-- Get a list of all countries in Europe with a surface area larger than the average 
+-- surface area in Europe 
+
+
+SELECT Name, SurfaceArea, Continent 
+FROM country
+WHERE Continent = 'Europe'
+AND SurfaceArea > (SELECT AVG(SurfaceArea) FROM country WHERE Continent = 'Europe')
+ORDER BY SurfaceArea DESC;  
